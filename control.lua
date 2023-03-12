@@ -52,6 +52,9 @@ end
 
 local function initialize()
     for _, player in pairs(game.players) do
+        while get_buttons(player)~=nil do
+            get_buttons(player).destroy()
+        end
         create_gui(player)
     end
     for _, player in pairs(game.players) do
