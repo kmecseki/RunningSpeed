@@ -1,3 +1,10 @@
+Version: 0.2.0
+Date: 12 March 2023
+  Features:
+    - Added hotkeys (Alt + 1, 2, 3 for changing running speed)
+    - Changed console message to player toast to stop cluttering the console
+    - Added new screenshots
+
 Version: 0.1.0
 Date: 3 March 2023
   Features:

@@ -14,3 +14,25 @@ default_gui["button_default"] = {
     width = 30
 }
 
+data:extend({
+    {
+        type = "custom-input",
+        name = "hk-set-speed0",
+        key_sequence = "ALT + 1",
+        order = 'a-a',
+    },
+    {
+        type = "custom-input",
+        name = "hk-set-speed1",
+        key_sequence = "ALT + 2",
+        order = 'a-b',
+    },
+    {
+        type = "custom-input",
+        name = "hk-set-speed2",
+        key_sequence = "ALT + 3",
+        order = 'a-c',
+    },
+
+
+})
