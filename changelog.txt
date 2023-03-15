@@ -1,3 +1,9 @@
+Version: 0.3.0
+Date: 14 March 2023
+  Features:
+    - Added option to hide GUI buttons
+    - Added shortcuts to shortcut bar
+
 Version: 0.2.0
 Date: 12 March 2023
   Features:

@@ -55,7 +55,9 @@ local function initialize()
         while get_buttons(player)~=nil do
             get_buttons(player).destroy()
         end
-        create_gui(player)
+        if settings.get_player_settings(player)["showguiontop"].value then
+            create_gui(player)
+        end
     end
     for _, player in pairs(game.players) do
         local flow = mod_gui.get_frame_flow(player)
@@ -65,16 +67,7 @@ local function initialize()
     end
 end
 
-script.on_init(initialize)
-
-script.on_event(defines.events.on_player_created, function(event)
-    local player = game.players[event.player_index]
-    create_gui(player)
-end)
-
-script.on_configuration_changed(initialize)
-
-function set_runspeed(event, setting)
+local function set_runspeed(event, setting)
     local player = game.players[event.player_index]
     player.character_running_speed_modifier=settings.get_player_settings(player)[setting].value
     player.create_local_flying_text{
@@ -100,6 +93,21 @@ function on_gui_click(event)
     end
 end
 
+local function shortcut_events(event)
+    local player = game.players[event.player_index]
+    set_runspeed(event, event.prototype_name)
+end
+
+script.on_init(initialize)
+
+script.on_event(defines.events.on_player_created, function(event)
+    local player = game.players[event.player_index]
+    create_gui(player)
+end)
+
+script.on_configuration_changed(initialize)
+
+
 script.on_event("hk-set-speed0", function(event) set_runspeed(event, "speed0") end)
 script.on_event("hk-set-speed1", function(event) set_runspeed(event, "speed1") end)
 script.on_event("hk-set-speed2", function(event) set_runspeed(event, "speed2") end)
@@ -108,5 +116,14 @@ script.on_event(defines.events.on_gui_click, function(event)
     on_gui_click(event)
 end)
 
+script.on_event(defines.events.on_lua_shortcut, function(event)
+    shortcut_events(event)
+end)
+
+script.on_event(defines.events.on_runtime_mod_setting_changed, function(event)
+    if event.setting=="showguiontop" then
+        initialize()
+    end
+end)
 
 
