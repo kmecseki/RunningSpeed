@@ -95,7 +95,9 @@ end
 
 local function shortcut_events(event)
     local player = game.players[event.player_index]
-    set_runspeed(event, event.prototype_name)
+    if event.prototype_name=="speed0" or event.prototype_name=="speed1" or event.prototype_name=="speed2" then
+        set_runspeed(event, event.prototype_name)
+    end
 end
 
 script.on_init(initialize)
