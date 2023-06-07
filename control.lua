@@ -69,13 +69,15 @@ end
 
 local function set_runspeed(event, setting)
     local player = game.players[event.player_index]
-    player.character_running_speed_modifier=settings.get_player_settings(player)[setting].value
-    player.create_local_flying_text{
-        text = "Running speed set to " .. player.character_running_speed_modifier,
-        position = player.position,
-        color = {r=1, g=0.5, b=0},
-        time_to_live = 40
-        }
+    if (player.character~=nil) then
+        player.character_running_speed_modifier=settings.get_player_settings(player)[setting].value
+        player.create_local_flying_text{
+            text = "Running speed set to " .. player.character_running_speed_modifier,
+            position = player.position,
+            color = {r=1, g=0.5, b=0},
+            time_to_live = 40
+            }
+    end
 end
 
 function on_gui_click(event)
