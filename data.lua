@@ -41,34 +41,14 @@ data:extend({
         associated_control_input = "hk-set-speed0",
         localised_name = {"shortcuts.shortcut-speed0"},
         toggleable = false,
-        icon = {
-            filename = "__RunningSpeed__/graphics/button1c.png",
-            priority = "extra-high-no-scale",
-            size = 128,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        disabled_icon = {
-            filename = "__RunningSpeed__/graphics/button1c.png",
-            priority = "extra-high-no-scale",
-            size = 128,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        small_icon = {
-            filename = "__RunningSpeed__/graphics/button1.png",
-            priority = "extra-high-no-scale",
-            size = 64,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        disabled_small_icon = {
-            filename = "__RunningSpeed__/graphics/button1.png",
-            priority = "extra-high-no-scale",
-            size = 64,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
+        icon = "__RunningSpeed__/graphics/button1c.png",
+        icon_size = 128,
+        disabled_icon = "__RunningSpeed__/graphics/button1c.png",
+        disabled_icon_size = 128,
+        small_icon = "__RunningSpeed__/graphics/button1.png",
+        small_icon_size = 64,
+        disabled_small_icon = "__RunningSpeed__/graphics/button1.png",
+        disabled_small_icon_size = 64
     },
     {
         type = "shortcut",
@@ -78,34 +58,14 @@ data:extend({
         associated_control_input = "hk-set-speed1",
         localised_name = {"shortcuts.shortcut-speed1"},
         toggleable = false,
-        icon = {
-            filename = "__RunningSpeed__/graphics/button2c.png",
-            priority = "extra-high-no-scale",
-            size = 128,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        disabled_icon = {
-            filename = "__RunningSpeed__/graphics/button2c.png",
-            priority = "extra-high-no-scale",
-            size = 128,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        small_icon = {
-            filename = "__RunningSpeed__/graphics/button2.png",
-            priority = "extra-high-no-scale",
-            size = 64,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        disabled_small_icon = {
-            filename = "__RunningSpeed__/graphics/button2.png",
-            priority = "extra-high-no-scale",
-            size = 64,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
+        icon = "__RunningSpeed__/graphics/button2c.png",
+        icon_size = 128,
+        disabled_icon = "__RunningSpeed__/graphics/button2c.png",
+        disabled_icon_size = 128,
+        small_icon = "__RunningSpeed__/graphics/button2.png",
+        small_icon_size = 64,
+        disabled_small_icon = "__RunningSpeed__/graphics/button2.png",
+        disabled_small_icon_size = 64
     },
     {
         type = "shortcut",
@@ -115,34 +75,14 @@ data:extend({
         associated_control_input = "hk-set-speed2",
         localised_name = {"shortcuts.shortcut-speed2"},
         toggleable = false,
-        icon = {
-            filename = "__RunningSpeed__/graphics/button3c.png",
-            priority = "extra-high-no-scale",
-            size = 128,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        disabled_icon = {
-            filename = "__RunningSpeed__/graphics/button3c.png",
-            priority = "extra-high-no-scale",
-            size = 128,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        small_icon = {
-            filename = "__RunningSpeed__/graphics/button3.png",
-            priority = "extra-high-no-scale",
-            size = 64,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
-        disabled_small_icon = {
-            filename = "__RunningSpeed__/graphics/button3.png",
-            priority = "extra-high-no-scale",
-            size = 64,
-            scale = 1,
-            flags = {"gui-icon"}
-        },
+        icon = "__RunningSpeed__/graphics/button3c.png",
+        icon_size = 128,
+        disabled_icon = "__RunningSpeed__/graphics/button3c.png",
+        disabled_icon_size = 128,
+        small_icon = "__RunningSpeed__/graphics/button3.png",
+        small_icon_size = 64,
+        disabled_small_icon = "__RunningSpeed__/graphics/button3.png",
+        disabled_small_icon_size = 64
     },
 
 })
