@@ -34,6 +34,12 @@ data:extend({
         order = 'a-c',
     },
     {
+        type = "custom-input",
+        name = "hk-switch-fast-slow",
+        key_sequence = "CONTROL + SPACE",
+        order = 'a-d',
+    },
+    {
         type = "shortcut",
         name = "speed0",
         order = "r[running]-s[speed0]",
@@ -84,5 +90,4 @@ data:extend({
         disabled_small_icon = "__RunningSpeed__/graphics/button3.png",
         disabled_small_icon_size = 64
     },
-
 })

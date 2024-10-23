@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.1
+Date: 22 October 2024
+  Minor features:
+    - Added a hotkey to switch speed between fastes and slowest speeds.
+  Minor bugfixes:
+    - Fixed frame getting stuck after removing top left gui buttons.
+---------------------------------------------------------------------------------------------------
 Version: 0.5.0
 Date: 19 October 2024
   Major update:

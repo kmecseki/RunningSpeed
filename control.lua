@@ -24,8 +24,9 @@ function get_main_frame(player)
 end
 
 function create_gui(player)
-    if (not get_buttons(player)
-        and not get_main_frame(player)) then
+    
+    if (not get_buttons(player) and not get_main_frame(player)) then
+    
         mod_gui.get_button_flow(player).add({
             type = "button",
             style = "button_default",
@@ -33,6 +34,7 @@ function create_gui(player)
             caption = ">",
             tooltip = "Hotkey: Alt + 1"
         })
+    
         mod_gui.get_button_flow(player).add({
             type = "button",
             style = "button_default",
@@ -40,6 +42,7 @@ function create_gui(player)
             caption = ">>",
             tooltip = "Hotkey: Alt + 2"
         })
+    
         mod_gui.get_button_flow(player).add({
             type = "button",
             style = "button_default",
@@ -52,31 +55,52 @@ end
 
 local function initialize()
     for _, player in pairs(game.players) do
+        
         while get_buttons(player)~=nil do
             get_buttons(player).destroy()
         end
-        if settings.get_player_settings(player)["showguiontop"].value then
-            create_gui(player)
-        end
-    end
-    for _, player in pairs(game.players) do
+        
         local flow = mod_gui.get_frame_flow(player)
         if flow.mainframe then
             flow.mainframe.destroy()
         end
+
+        local mod_gui_button_flow = player.gui.top.mod_gui_top_frame
+        if (#mod_gui_button_flow["mod_gui_inner_frame"].children == 0) then
+            mod_gui_button_flow.mod_gui_inner_frame.destroy()
+            mod_gui_button_flow.destroy()
+        end
+
+        if settings.get_player_settings(player)["showguiontop"].value then
+            create_gui(player)
+        end
     end
+end
+
+local function modify_speed(player, speed, rgb)
+    player.character_running_speed_modifier=settings.get_player_settings(player)[speed].value
+    player.create_local_flying_text{
+        text = "Running speed set to " .. player.character_running_speed_modifier,
+        position = player.position,
+        color = rgb,
+        time_to_live = 40
+    }
 end
 
 local function set_runspeed(event, setting)
     local player = game.players[event.player_index]
     if (player.character~=nil) then
-        player.character_running_speed_modifier=settings.get_player_settings(player)[setting].value
-        player.create_local_flying_text{
-            text = "Running speed set to " .. player.character_running_speed_modifier,
-            position = player.position,
-            color = {r=1, g=0.5, b=0},
-            time_to_live = 40
-            }
+        if (setting == "switch") then
+            if (player.character_running_speed_modifier == settings.get_player_settings(player)["speed0"].value) then
+                -- we are in slow mode
+                modify_speed(player, "speed2", {r=0, g=1, b=0})
+            else
+                -- we are in some faster mode
+                modify_speed(player, "speed0", {r=1, g=0, b=0})
+            end
+        else
+            modify_speed(player, setting, {r=1, g=0.5, b=0})
+        end
     end
 end
 
@@ -111,19 +135,14 @@ end)
 
 script.on_configuration_changed(initialize)
 
-
 script.on_event("hk-set-speed0", function(event) set_runspeed(event, "speed0") end)
 script.on_event("hk-set-speed1", function(event) set_runspeed(event, "speed1") end)
 script.on_event("hk-set-speed2", function(event) set_runspeed(event, "speed2") end)
+script.on_event("hk-set-speed2", function(event) set_runspeed(event, "speed2") end)
+script.on_event("hk-switch-fast-slow", function(event) set_runspeed(event, "switch") end)
 
-script.on_event(defines.events.on_gui_click, function(event)
-    on_gui_click(event)
-end)
-
-script.on_event(defines.events.on_lua_shortcut, function(event)
-    shortcut_events(event)
-end)
-
+script.on_event(defines.events.on_gui_click, function(event) on_gui_click(event) end)
+script.on_event(defines.events.on_lua_shortcut, function(event) shortcut_events(event) end)
 script.on_event(defines.events.on_runtime_mod_setting_changed, function(event)
     if event.setting=="showguiontop" then
         initialize()
