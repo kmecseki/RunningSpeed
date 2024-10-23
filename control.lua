@@ -79,24 +79,40 @@ end
 
 local function modify_speed(player, speed, rgb)
     player.character_running_speed_modifier=settings.get_player_settings(player)[speed].value
-    player.create_local_flying_text{
-        text = "Running speed set to " .. player.character_running_speed_modifier,
-        position = player.position,
-        color = rgb,
-        time_to_live = 40
-    }
+    if (settings.get_player_settings(player)["floatingmessages"].value) then
+        player.create_local_flying_text{
+            text = "Running speed set to " .. player.character_running_speed_modifier,
+            position = player.position,
+            color = rgb,
+            time_to_live = 40
+        }
+    end
 end
 
 local function set_runspeed(event, setting)
     local player = game.players[event.player_index]
     if (player.character~=nil) then
         if (setting == "switch") then
-            if (player.character_running_speed_modifier == settings.get_player_settings(player)["speed0"].value) then
-                -- we are in slow mode
-                modify_speed(player, "speed2", {r=0, g=1, b=0})
+            if  (settings.get_player_settings(player)["cycleall"].value) then
+                if (player.character_running_speed_modifier == settings.get_player_settings(player)["speed0"].value) then
+                    -- we are in slow mode
+                    modify_speed(player, "speed1", {r=0, g=1, b=0})
+                elseif (player.character_running_speed_modifier == settings.get_player_settings(player)["speed1"].value) then
+                    -- we are in medium mode
+                    modify_speed(player, "speed2", {r=0, g=0, b=1})
+                else
+                    -- we are in some other fast mode
+                    modify_speed(player, "speed0", {r=1, g=0, b=0})
+                end
             else
-                -- we are in some faster mode
-                modify_speed(player, "speed0", {r=1, g=0, b=0})
+                -- cycle beween only fast/slow
+                if (player.character_running_speed_modifier == settings.get_player_settings(player)["speed0"].value) then
+                    -- we are in slow mode
+                    modify_speed(player, "speed2", {r=0, g=1, b=0})
+                else
+                    -- we are in some faster mode
+                    modify_speed(player, "speed0", {r=1, g=0, b=0})
+                end
             end
         else
             modify_speed(player, setting, {r=1, g=0.5, b=0})

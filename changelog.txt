@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.3
+Date: 23 October 2024
+  Minor features:
+    - Added option to turn the floating messages off.
+---------------------------------------------------------------------------------------------------
+Version: 0.5.2
+Date: 23 October 2024
+  Minor features:
+    - Added cycle through all speeds setting vs slow/fast only (default).
+---------------------------------------------------------------------------------------------------
 Version: 0.5.1
 Date: 22 October 2024
   Minor features:

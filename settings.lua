@@ -27,4 +27,18 @@ data:extend({
 		default_value = true,
 		per_user = true
 	},
+	{
+		name = "cycleall",
+		setting_type = "runtime-per-user",
+		type = "bool-setting",
+		default_value = false,
+		per_user = true
+	},
+	{
+		name = "floatingmessages",
+		setting_type = "runtime-per-user",
+		type = "bool-setting",
+		default_value = true,
+		per_user = true
+	},
 })
